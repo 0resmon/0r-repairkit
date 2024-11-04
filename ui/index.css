@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Gilroy-BoldItalic';
+    src: url('./assets/fonts/Gilroy-BoldItalic.ttf');
+  }
+  
+  
+@font-face {
+    font-family: 'Gilroy-MediumItalic';
+    src: url('./assets/fonts/Gilroy-MediumItalic.ttf');
+}
+
+body,
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    user-select: none;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}

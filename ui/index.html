@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite + Vue</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./assets/api/progressbar.js"></script>
+    <script src="./assets/api/vue.global.js"></script>
+    <script src="./assets/api/vuex.global.js"></script>
+
+</head>
+<body>
+    <v-app data-app >
+        <div id="app" class="w-[100vw] h-[100vh] items-center justify-center overflow-hidden hidden">
+            <div v-if="show.key">
+                <div class="flex items-center">
+                     <p class="font-['Gilroy-BoldItalic'] font-bold text-[.8333vw] leading-[1.0417vw] text-[#ffffff]">{{ locales.press }}</p>
+                    <div class="flex items-center justify-center relative ml-[.5208vw] mr-[.3646vw]">
+                        <div id="test" class="absolute">
+                        </div>
+                        <div class="relative flex items-center justify-center">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="15.75" fill="url(#paint0_radial_33_911)" stroke="#EF2648" stroke-width="0.5"/>
+                                <defs>
+                                <radialGradient id="paint0_radial_33_911" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16 16) scale(16)">
+                                <stop stop-color="#EF2648"/>
+                                <stop offset="1" stop-color="#891629"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                            <p class="font-['Gilroy-BoldItalic'] font-bold text-[.8333vw] leading-[.9896vw] text-[#fff] absolute">
+                                {{ currentKey }}
+                            </p>
+                        </div>
+                    </div>
+                    <p class="font-['Gilroy-BoldItalic'] font-bold text-[.8333vw] leading-[1.0417vw] text-[#ffffff]">{{ locales.to }}</p>
+                    <p class="font-['Gilroy-BoldItalic'] font-bold text-[.8333vw] leading-[1.0417vw] text-[#FF3053]">{{ locales.fixVehicle }}</p>
+                </div>
+            </div>
+            <div v-if="show.progress" class="flex flex-col items-start justify-center absolute bottom-[2.0833vw] gap-y-[.625vw]">
+                <div class="flex items-center gap-x-[.3125vw]">
+                    <p class="font-['Gilroy-BoldItalic'] font-bold text-[1.25vw] leading-[1.5625vw] text-[#ffffff]">{{ locales.repairing }}</p>
+                    <div class="flex items-center relative">
+                        <div class="min-w-[5.8854vw] w-max h-[1.6146vw] border-[.026vw] border-[#EF2648] shadow-[0vw_.2083vw_2.8906vw_#EF2648] flex items-center justify-center relative z-[2] px-[.625vw]" style="clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);background: radial-gradient(50% 50% at 50% 50%, #EF2648 0%, #891629 100%);">
+                            <p class="font-['Gilroy-MediumItalic'] font-medium text-[1.0417vw] leading-[1.25vw] text-[#ffffff] text-left">{{ locales.vehicle }}</p>
+                        </div>
+                        <div class="min-w-[3.724vw] w-max h-[1.6146vw] border-[.026vw] border-[#EFC726] shadow-[0vw_.2083vw_2.8906vw_##EFC726] flex items-center justify-end pr-[.625vw] relative right-[.5208vw] z-[1]" style="clip-path: polygon(5% 0, 100% 0%, 94% 100%, 0% 100%);background: radial-gradient(79.02% 50% at 79.02% 50%, #EFC726 0%, #B3961F 100%);">
+                            <p class="font-['Gilroy-MediumItalic'] font-medium text-[1.0417vw] leading-[1.25vw] text-[#ffffff] text-right">{{ this.progressBar }}%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-[.5208vw]">
+                    <div v-for="(wheel, index) in wheelSize" :key="index">
+                        <img
+                            :src="index < Math.floor((this.keyPressSize / this.needKeyPressSize) * wheelSize) 
+                                  ? './assets/svg/active-wheel.svg' 
+                                  : './assets/svg/deactive-wheel.svg'"
+                            alt="wheel"
+                            class="w-[.9396vw] h-[.9375vw] object-contain"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </v-app>
+
+    <script src="./index.js" type="module"></script>
+</body>
+</html>
